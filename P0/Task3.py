@@ -44,3 +44,32 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+# Part A
+import re
+
+callee_codes = []
+uniq_callee_codes = []
+callee_pattern = re.compile('^(140|\(\d+\)|[789]\d{3})(\d+|\d*\s\d+)')
+
+for record in calls:
+  if record[0].startswith('(080)'):
+    callee_match = callee_pattern.match(record[1])
+    area_code = callee_match.group(1).strip('() ')
+    callee_codes.append(area_code)
+
+for code in callee_codes:
+  if code not in uniq_callee_codes:
+    uniq_callee_codes.append(code)
+
+uniq_callee_codes.sort()
+
+print("The numbers called by people in Bangalore have codes:")
+for entry in uniq_callee_codes:
+  print(entry)
+
+# Part B
+bangalore_callee_codes = [ entry for entry in callee_codes if entry == '080' ]
+percent_calls_to_bangalore = (len(bangalore_callee_codes) / len(callee_codes)) * 100
+
+print(f"{percent_calls_to_bangalore:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")

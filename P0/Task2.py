@@ -20,3 +20,12 @@ Print a message:
 September 2016.".
 """
 
+time_on_the_phone = {}
+
+for record in calls:
+    time_on_the_phone[record[0]] = time_on_the_phone.get(record[0], 0) + int(record[-1])
+    time_on_the_phone[record[1]] = time_on_the_phone.get(record[1], 0) + int(record[-1])
+
+n1 = max(time_on_the_phone,key=lambda item : time_on_the_phone[item]) 
+
+print(f"{n1} spent the longest time, {time_on_the_phone[n1]} seconds, on the phone during September 2016.")

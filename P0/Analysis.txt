@@ -1,0 +1,19 @@
+Task0:
+- Time complexity is O(1) because we are accessing first and
+  last records directly and particular fields directly.
+
+Task1:
+- Time complexity is O(n)
+- The number of operations increases linearly with input
+
+Task2:
+- Time complexity is O(n)
+- The number of operations increases linearly with input
+
+Task3:
+- Time complexity is O(n) for both part A and part B
+- The number of operations increases linearly with input
+
+Task4:
+- Time complexity is O(n)
+- The number of operations increases linearly with input
