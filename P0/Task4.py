@@ -26,27 +26,18 @@ The list of numbers should be print out one per line in lexicographic order with
 """
 
 # include all callers
-possible_telemarketers = [ record[0] for record in calls ]
+possible_telemarketers = set([ record[0] for record in calls ])
 
 # remove callees
 for record in calls:
-    if record[1] in possible_telemarketers:
-        possible_telemarketers.remove(record[1])
+    possible_telemarketers = set(filter(lambda x: x not in [record[1]], possible_telemarketers))
 
 # remove sms senders and receivers
 for record in texts:
-    if record[0] in possible_telemarketers:
-        possible_telemarketers.remove(record[0])
-    if record[1] in possible_telemarketers:
-        possible_telemarketers.remove(record[1])
-
-uniq_possible_telemarketers = []
-for entry in possible_telemarketers:
-    if entry not in uniq_possible_telemarketers:
-        uniq_possible_telemarketers.append(entry)
+    possible_telemarketers = set(filter(lambda x: x not in [record[0], record[1]], possible_telemarketers))
 
 
-uniq_possible_telemarketers.sort()
+possible_telemarketers = sorted(possible_telemarketers)
 print("These numbers could be telemarketers: ")
-for entry in uniq_possible_telemarketers:
+for entry in possible_telemarketers:
     print(entry)
