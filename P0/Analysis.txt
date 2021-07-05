@@ -3,17 +3,26 @@ Task0:
   last records directly and particular fields directly.
 
 Task1:
-- Time complexity is O(n)
-- The number of operations increases linearly with input
+- Time complexity is O(n^2)
+- The outer loop (for record in texts + calls:) runs in 
+  O(n) time and the containment checks in the loop (if record[0] not in telephone_numbers)
+  also runs O(n) resulting in O(n^2)
 
 Task2:
 - Time complexity is O(n)
 - The number of operations increases linearly with input
 
 Task3:
-- Time complexity is O(n) for both part A and part B
-- The number of operations increases linearly with input
+- Part A:
+  Time complexity is O(n^2) determined by loop (for code in callee_codes:)
+  that has a containment check (if code not in uniq_callee_codes:)
+  This is greater than the complexity of the sort (nlogn)
+- Part B:
+  Time complexity is O(n) determined by the assignment
+  (bangalore_callee_codes = [ entry for entry in callee_codes if entry == '080' ])
 
 Task4:
-- Time complexity is O(n)
-- The number of operations increases linearly with input
+- Time complexity is O(n^2) determined by the loops on the records
+  that contain a filter on possiible_telemarketers. Both have worst case of
+  O(n) for a total of O(n^2)
+
