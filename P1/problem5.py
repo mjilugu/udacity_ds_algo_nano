@@ -29,6 +29,12 @@ class Block:
       def get_next(self):
             return self.next
 
+      def get_hash(self):
+            return self.hash
+
+      def get_data(self):
+            return self.data
+
       def __str__(self):
             block_str = f"{self.timestamp}\t{self.data}\t{self.hash}"
 
@@ -42,7 +48,7 @@ class Blockchain:
 
       def add_block(self, data):
             if self.tail:
-                  node = Block(datetime.utcnow(), data, self.tail.get_previous_hash())
+                  node = Block(datetime.utcnow(), data, self.tail.get_hash())
                   self.tail.set_next(node)
                   self.tail = node
             else:
@@ -52,7 +58,34 @@ class Blockchain:
             self.count += 1
 
       def verify_blockchain(self):
-            pass
+            curr = self.head
+
+            while curr:
+                  calculated_hash = curr.calc_hash()
+                  if curr.get_next():
+                        stored_hash = curr.get_next().get_previous_hash()
+                  else:
+                        # last node
+                        stored_hash = curr.get_hash()
+                  if calculated_hash != stored_hash:
+                        print(f"Calculated hash: {calculated_hash}")
+                        print(f"Stored hash: {stored_hash}")
+                        # raise AssertionError(f"Block Modified: {curr}")
+                        print(f"WARNING!! Block modified > {curr}")
+
+                  curr = curr.get_next()
+
+      def find(self, data):
+            curr = self.head
+            node = None
+
+            while curr:
+                  if curr.get_data() == data:
+                        node = curr
+                        break
+                  curr = curr.get_next()
+
+            return node
 
       def __str__(self):
             blockchain_str = str()
@@ -72,4 +105,23 @@ if __name__ == '__main__':
       for i in range(10):
             blockchain.add_block(f"data {i}")
 
-      print(blockchain)
+      # print(blockchain)
+      blockchain.verify_blockchain()
+
+      # Test 0: 
+      node = blockchain.find('data 0')
+      if node:
+            node.data = 'data 99'
+      blockchain.verify_blockchain()
+
+      # Test 1: 
+      node = blockchain.find('data 4')
+      if node:
+            node.data = 'data 99'
+      blockchain.verify_blockchain()
+
+      # Test 2: 
+      node = blockchain.find('data 9')
+      if node:
+            node.data = 'data 99'
+      blockchain.verify_blockchain()

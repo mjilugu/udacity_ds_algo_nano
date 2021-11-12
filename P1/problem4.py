@@ -64,6 +64,15 @@ def is_user_in_group(user, group):
 
 if __name__ == "__main__":
     child_user2 = "child user 2"
+
+    print(f"Test0: is_user_in_group(sub_child_user, child)")
+    # True
     print(is_user_in_group(sub_child_user, child))
+
+    print(f"Test1: is_user_in_group(sub_child_user, parent)")
+    # True
     print(is_user_in_group(sub_child_user, parent))
+
+    print(f"Test2: is_user_in_group(sub_child_user2, parent)")
+    # False
     print(is_user_in_group(child_user2, parent))

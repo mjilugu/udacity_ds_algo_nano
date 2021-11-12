@@ -42,5 +42,44 @@ if __name__ == '__main__':
     path = 'testdir'
     suffix = '.c'
 
-    paths = find_files(suffix, path)
-    print(paths)
+    # paths = find_files(suffix, path)
+    # print(paths)
+    # treee testdir
+    # ├── subdir1
+    # │   ├── a.c
+    # │   └── a.h
+    # ├── subdir2
+    # ├── subdir3
+    # │   └── subsubdir1
+    # │       ├── b.c
+    # │       └── b.h
+    # ├── subdir4
+    # ├── subdir5
+    # │   ├── a.c
+    # │   └── a.h
+    # ├── t1.c
+    # └── t1.h
+
+    print(f"\nTest0: find_files('.c','testdir')")
+    # ['testdir/subdir3/subsubdir1/b.c', 'testdir/t1.c', 'testdir/subdir5/a.c', 'testdir/subdir1/a.c']
+    print(find_files('.c','testdir'))
+
+    print(f"\nTest1: find_files('.c','testdir/subdir5/subsub51')")
+    # ['testdir/subdir5/subsub51/a51.c']
+    print(find_files('.c','testdir/subdir5/subsub51'))
+
+    print(f"\nTest2: find_files('.c','testdir/subdir4')")
+    # []
+    print(find_files('.c','testdir/subdir4'))
+
+    print(f"\nTest3: find_files('.c','testdir/subdir432')")
+    # []
+    print(find_files('.c','testdir/subdir432'))
+
+    print(f"\nTest4: find_files('.c','testdir/subdir5/nodir')")
+    # []
+    print(find_files('.c','testdir/subdir5/nodir'))
+
+    print(f"\nTest5: find_files('.c','testdir/subdir5')")
+    # ['testdir/subdir5/a.c','testdir/subdir5/subsub51/a51.c']
+    print(find_files('.c','testdir/subdir5'))
