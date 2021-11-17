@@ -41,10 +41,10 @@ if __name__ == "__main__":
     print(f"{our_cache.get(0)}")
 
     print(f"\n*** Add four values to our_cache ***\n")
-    our_cache.set(1, 1);
-    our_cache.set(2, 2);
-    our_cache.set(3, 3);
-    our_cache.set(4, 4);
+    our_cache.set(1, 1)
+    our_cache.set(2, 2)
+    our_cache.set(3, 3)
+    our_cache.set(4, 4)
 
     print(f"Test1: our_cache.get(1) returns 1")
     #1

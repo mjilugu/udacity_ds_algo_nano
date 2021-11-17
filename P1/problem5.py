@@ -59,6 +59,7 @@ class Blockchain:
 
       def verify_blockchain(self):
             curr = self.head
+            blockchain_altered = False
 
             while curr:
                   calculated_hash = curr.calc_hash()
@@ -67,13 +68,16 @@ class Blockchain:
                   else:
                         # last node
                         stored_hash = curr.get_hash()
+
                   if calculated_hash != stored_hash:
-                        print(f"Calculated hash: {calculated_hash}")
-                        print(f"Stored hash: {stored_hash}")
                         # raise AssertionError(f"Block Modified: {curr}")
                         print(f"WARNING!! Block modified > {curr}")
+                        blockchain_altered = True
 
                   curr = curr.get_next()
+            
+            if not blockchain_altered:
+                  print(f"Block chain is safe.")
 
       def find(self, data):
             curr = self.head
@@ -97,31 +101,47 @@ class Blockchain:
 
             return blockchain_str
 
-#
-# Main
-#
-if __name__ == '__main__':
+def generate_sample_blockchain():
       blockchain = Blockchain()
       for i in range(10):
             blockchain.add_block(f"data {i}")
 
-      # print(blockchain)
-      blockchain.verify_blockchain()
+      return blockchain
 
-      # Test 0: 
-      node = blockchain.find('data 0')
-      if node:
-            node.data = 'data 99'
+
+#
+# Main
+#
+if __name__ == '__main__':
+      blockchain = generate_sample_blockchain()
+
+      # print(blockchain)
+
+      # Test 0:
+      print(f"\nTest0: ")
+      blockchain = generate_sample_blockchain()
       blockchain.verify_blockchain()
 
       # Test 1: 
-      node = blockchain.find('data 4')
+      print(f"\nTest1: ")
+      blockchain = generate_sample_blockchain()
+      node = blockchain.find('data 0')
       if node:
-            node.data = 'data 99'
+            node.data = 'data 099'
       blockchain.verify_blockchain()
 
       # Test 2: 
+      print(f"\nTest2: ")
+      blockchain = generate_sample_blockchain()
+      node = blockchain.find('data 4')
+      if node:
+            node.data = 'data 499'
+      blockchain.verify_blockchain()
+
+      # Test 3: 
+      print(f"\nTest3: ")
+      blockchain = generate_sample_blockchain()
       node = blockchain.find('data 9')
       if node:
-            node.data = 'data 99'
+            node.data = 'data 999'
       blockchain.verify_blockchain()

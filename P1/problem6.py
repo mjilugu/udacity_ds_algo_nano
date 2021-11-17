@@ -23,6 +23,14 @@ class LinkedList:
             cur_head = cur_head.next
         return out_string
 
+    def to_array(self):
+        cur_head = self.head 
+        arr = list()
+        
+        while cur_head:
+            arr.append(cur_head.value)
+            cur_head = cur_head.next
+        return arr
 
     def append(self, value):
 
@@ -90,8 +98,13 @@ def intersection(llist_1, llist_2):
 
 if __name__ == '__main__':
 
-    print(f"Test0: is_user_in_group(sub_child_user, child)")
-    # True
+    print(f'''
+************************* Test0: 
+union([3,2,4,35,6,65,6,4,3,21],[6,32,4,9,6,1,11,21,1])
+intersection([3,2,4,35,6,65,6,4,3,21],[6,32,4,9,6,1,11,21,1])
+''')
+    # [32, 65, 2, 35, 3, 4, 6, 1, 9, 11, 21]
+    # [4, 6, 21]
 
     linked_list_1 = LinkedList()
     linked_list_2 = LinkedList()
@@ -101,11 +114,16 @@ if __name__ == '__main__':
 
     u_list = union(linked_list_1,linked_list_2)
     i_list = intersection(linked_list_1,linked_list_2)
-    print (u_list)
-    print (i_list)
+    print (u_list.to_array())
+    print (i_list.to_array())
 
-    print(f"Test1: is_user_in_group(sub_child_user, child)")
-    # True
+    print(f'''
+************************* Test1: 
+union([3,2,4,35,6,65,6,4,3,23],[1,7,8,9,11,21,1])
+intersection([3,2,4,35,6,65,6,4,3,23],[1,7,8,9,11,21,1])
+''')
+    # [65, 2, 35, 3, 4, 6, 1, 7, 8, 9, 11, 21, 23]
+    # []
 
     linked_list_3 = LinkedList()
     linked_list_4 = LinkedList()
@@ -115,11 +133,16 @@ if __name__ == '__main__':
 
     u_list = union(linked_list_3,linked_list_4)
     i_list = intersection(linked_list_3,linked_list_4)
-    print (u_list)
-    print (i_list)
+    print (u_list.to_array())
+    print (i_list.to_array())
 
-    print(f"\nTest2: is_user_in_group(sub_child_user, child)")
-    # True
+    print(f'''
+************************* Test2: 
+union([1,2,3],[1,4,5])
+intersection([1,2,3],[1,4,5])
+''')
+    # [1, 2, 3, 4, 5]
+    # [1]
 
     linked_list_5 = LinkedList()
     linked_list_6 = LinkedList()
@@ -129,11 +152,16 @@ if __name__ == '__main__':
 
     u_list = union(linked_list_5,linked_list_6)
     i_list = intersection(linked_list_5,linked_list_6)
-    print (u_list)
-    print (i_list)
+    print (u_list.to_array())
+    print (i_list.to_array())
 
-    print(f"\nTest3: is_user_in_group(sub_child_user, child)")
-    # True
+    print(f'''
+************************* Test3: 
+union([1,2,3],[4,5])
+intersection([1,2,3],[4,5])
+''')
+    # [1, 2, 3, 4, 5]
+    # []
 
     linked_list_7 = LinkedList()
     linked_list_8 = LinkedList()
@@ -143,5 +171,5 @@ if __name__ == '__main__':
 
     u_list = union(linked_list_7,linked_list_8)
     i_list = intersection(linked_list_7,linked_list_8)
-    print (u_list)
-    print (i_list)
+    print (u_list.to_array())
+    print (i_list.to_array())

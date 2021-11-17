@@ -47,6 +47,9 @@ def is_user_in_group(user, group):
     check if user in current group users list.
     if not check if user is in any of the sub groups users list
     '''
+    if user is None or group is None:
+        return False
+        
     if user in group.get_users():
         return True
 
@@ -76,3 +79,11 @@ if __name__ == "__main__":
     print(f"Test2: is_user_in_group(sub_child_user2, parent)")
     # False
     print(is_user_in_group(child_user2, parent))
+
+    print(f"Test3: is_user_in_group(None, parent)")
+    # False
+    print(is_user_in_group(None, parent))
+
+    print(f"Test4: is_user_in_group(child, None)")
+    # False
+    print(is_user_in_group(child, None))
