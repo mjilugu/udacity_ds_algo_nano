@@ -173,3 +173,60 @@ intersection([1,2,3],[4,5])
     i_list = intersection(linked_list_7,linked_list_8)
     print (u_list.to_array())
     print (i_list.to_array())
+
+    print(f'''
+************************* Test4: 
+union([1,2,3],[])
+intersection([1,2,3],[])
+''')
+    # [1, 2, 3]
+    # []
+
+    linked_list_7 = LinkedList()
+    linked_list_8 = LinkedList()
+
+    linked_list_7.append_array([1,2,3])
+    linked_list_8.append_array([])
+
+    u_list = union(linked_list_7,linked_list_8)
+    i_list = intersection(linked_list_7,linked_list_8)
+    print (u_list.to_array())
+    print (i_list.to_array())
+
+    print(f'''
+************************* Test5: 
+union([],[4,5])
+intersection([],[4,5])
+''')
+    # [4, 5]
+    # []
+
+    linked_list_7 = LinkedList()
+    linked_list_8 = LinkedList()
+
+    linked_list_7.append_array([])
+    linked_list_8.append_array([4,5])
+
+    u_list = union(linked_list_7,linked_list_8)
+    i_list = intersection(linked_list_7,linked_list_8)
+    print (u_list.to_array())
+    print (i_list.to_array())
+
+    print(f'''
+************************* Test6: 
+union([],[])
+intersection([],[])
+''')
+    # []
+    # []
+
+    linked_list_7 = LinkedList()
+    linked_list_8 = LinkedList()
+
+    linked_list_7.append_array([])
+    linked_list_8.append_array([])
+
+    u_list = union(linked_list_7,linked_list_8)
+    i_list = intersection(linked_list_7,linked_list_8)
+    print (u_list.to_array())
+    print (i_list.to_array())

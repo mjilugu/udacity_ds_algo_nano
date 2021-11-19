@@ -18,6 +18,9 @@ class LRU_Cache(object):
 
     def set(self, key, value):
         # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item. 
+        if self.capacity <= 0:
+            return 
+
         if len(self.items) >= self.capacity:
             self._remove_lru_item() 
 
@@ -62,4 +65,84 @@ if __name__ == "__main__":
 
     print(f"Test3: our_cache.get(3) returns -1 as 3 was replaced as least recently used element")
     #-1
+    print(f"{our_cache.get(3)}")
+
+    # Size zero
+    
+    print(f"\n*** our_cache initiated with capacity 0 ***\n")
+    our_cache = LRU_Cache(0)
+    print(f"Test0: our_cache.get(0) returns -1, cache is empty")
+    #-1
+    print(f"{our_cache.get(0)}")
+
+    print(f"\n*** Add four values to our_cache ***\n")
+    our_cache.set(1, 1)
+    our_cache.set(2, 2)
+    our_cache.set(3, 3)
+    our_cache.set(4, 4)
+
+    print(f"Test1: our_cache.get(1) returns 1")
+    #-1
+    print(f"{our_cache.get(1)}")
+    print(f"Test2: our_cache.get(2) returns 2")
+    #-1
+    print(f"{our_cache.get(2)}")
+    print(f"Test3: our_cache.get(9) returns -1")
+    #-1
+    print(f"{our_cache.get(9)}")
+
+    # Size -1
+    
+    print(f"\n*** our_cache initiated with capacity -1 ***\n")
+    our_cache = LRU_Cache(-1)
+    print(f"Test0: our_cache.get(0) returns -1, cache is empty")
+    #-1
+    print(f"{our_cache.get(0)}")
+
+    print(f"\n*** Add four values to our_cache ***\n")
+    our_cache.set(1, 1)
+    our_cache.set(2, 2)
+    our_cache.set(3, 3)
+    our_cache.set(4, 4)
+
+    print(f"Test1: our_cache.get(1) returns 1")
+    #-1
+    print(f"{our_cache.get(1)}")
+    print(f"Test2: our_cache.get(2) returns 2")
+    #-1
+    print(f"{our_cache.get(2)}")
+    print(f"Test3: our_cache.get(9) returns -1")
+    #-1
+    print(f"{our_cache.get(9)}")
+
+    # Size 1000
+    
+    print(f"\n*** our_cache initiated with capacity 1000 ***\n")
+    our_cache = LRU_Cache(1000)
+    print(f"Test0: our_cache.get(0) returns -1, cache is empty")
+    #-1
+    print(f"{our_cache.get(0)}")
+
+    print(f"\n*** Add four values to our_cache ***\n")
+    our_cache.set(1, 1)
+    our_cache.set(2, 2)
+    our_cache.set(3, 3)
+    our_cache.set(4, 4)
+
+    print(f"Test1: our_cache.get(1) returns 1")
+    #1
+    print(f"{our_cache.get(1)}")
+    print(f"Test2: our_cache.get(2) returns 2")
+    #2
+    print(f"{our_cache.get(2)}")
+    print(f"Test3: our_cache.get(9) returns -1")
+    #-1
+    print(f"{our_cache.get(9)}")
+
+    print(f"\n*** Add two new elements to our_cache ***\n")
+    our_cache.set(5, 5) 
+    our_cache.set(6, 6)
+
+    print(f"Test3: our_cache.get(3) returns 3 as nothing was replaced due to large size")
+    #3
     print(f"{our_cache.get(3)}")

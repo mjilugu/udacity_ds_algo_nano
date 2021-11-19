@@ -94,23 +94,28 @@ def huffman_decoding(data,tree):
     curr = tree
     idx = 0
 
-    while idx < len(data):
-        if curr.get_value():
+    # Text consisting only a single character repeatated N times.
+    if tree and tree.get_left() == None and tree.get_right() == None:
+        a_char = tree.get_value()
+        decoded_data = ''.join([ a_char for i in range(tree.get_freq()) ])
+    else:
+        while idx < len(data):
+            if curr.get_value():
+                decoded_data += curr.get_value()
+                curr = tree
+                continue
+
+            item = data[idx]
+
+            if item == '0':
+                curr = curr.get_left()
+            else:
+                curr = curr.get_right()
+            idx += 1
+
+        if curr and curr.get_value():
             decoded_data += curr.get_value()
             curr = tree
-            continue
-
-        item = data[idx]
-
-        if item == '0':
-            curr = curr.get_left()
-        else:
-            curr = curr.get_right()
-        idx += 1
-
-    if curr and curr.get_value():
-        decoded_data += curr.get_value()
-        curr = tree
 
     return decoded_data
 
@@ -202,3 +207,19 @@ if __name__ == "__main__":
 
     print ("The size of the decoded data is: {}".format(sys.getsizeof(decoded_data)))
     print ("The content of the decoded data is: {}".format(decoded_data))
+
+    print(f"\n************** Test5: huffman_encoding('AAAAAAA')")
+    a_great_sentence = "AAAAAAA"
+
+    print ("The size of the data is: {}".format(sys.getsizeof(a_great_sentence)))
+    print ("The content of the data is: {}".format(a_great_sentence))
+
+    encoded_data, tree = huffman_encoding(a_great_sentence)
+
+    print ("The size of the encoded data is: {}".format(sys.getsizeof(encoded_data)))
+    print ("The content of the encoded data is: {}".format(encoded_data))
+
+    decoded_data = huffman_decoding(encoded_data, tree)
+
+    print ("The size of the decoded data is: {}".format(sys.getsizeof(decoded_data)))
+    print ("The content of the encoded data is: {}".format(decoded_data))

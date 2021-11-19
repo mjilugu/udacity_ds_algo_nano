@@ -101,9 +101,9 @@ class Blockchain:
 
             return blockchain_str
 
-def generate_sample_blockchain():
+def generate_sample_blockchain(number_of_blocks):
       blockchain = Blockchain()
-      for i in range(10):
+      for i in range(number_of_blocks):
             blockchain.add_block(f"data {i}")
 
       return blockchain
@@ -113,18 +113,18 @@ def generate_sample_blockchain():
 # Main
 #
 if __name__ == '__main__':
-      blockchain = generate_sample_blockchain()
+      blockchain = generate_sample_blockchain(10)
 
       # print(blockchain)
 
       # Test 0:
       print(f"\nTest0: ")
-      blockchain = generate_sample_blockchain()
+      blockchain = generate_sample_blockchain(10)
       blockchain.verify_blockchain()
 
       # Test 1: 
       print(f"\nTest1: ")
-      blockchain = generate_sample_blockchain()
+      blockchain = generate_sample_blockchain(10)
       node = blockchain.find('data 0')
       if node:
             node.data = 'data 099'
@@ -132,7 +132,7 @@ if __name__ == '__main__':
 
       # Test 2: 
       print(f"\nTest2: ")
-      blockchain = generate_sample_blockchain()
+      blockchain = generate_sample_blockchain(10)
       node = blockchain.find('data 4')
       if node:
             node.data = 'data 499'
@@ -140,8 +140,17 @@ if __name__ == '__main__':
 
       # Test 3: 
       print(f"\nTest3: ")
-      blockchain = generate_sample_blockchain()
+      blockchain = generate_sample_blockchain(10)
       node = blockchain.find('data 9')
       if node:
             node.data = 'data 999'
+      blockchain.verify_blockchain()
+
+      # Test 4:
+      print(f"\nTest4: ")
+      blockchain = generate_sample_blockchain(1000)
+      blockchain.verify_blockchain()
+      node = blockchain.find('data 90')
+      if node:
+            node.data = 'data 9099'
       blockchain.verify_blockchain()
