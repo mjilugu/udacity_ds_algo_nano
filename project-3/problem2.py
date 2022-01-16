@@ -46,8 +46,22 @@ def test_function(test_case):
     else:
         print("Fail")
 
+print(f"Test1: test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])")
+#0
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
+
+print(f"Test1: test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])")
+#5
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
+
+print(f"Test1: test_function([[6, 7, 8, 1, 2, 3, 4], 8])")
+#2
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
+
+print(f"Test1: test_function([[6, 7, 8, 1, 2, 3, 4], 1])")
+#3
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
+
+print(f"Test1: test_function([[6, 7, 8, 1, 2, 3, 4], 10])")
+#-1
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])

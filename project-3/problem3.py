@@ -56,6 +56,10 @@ def test_function(test_case):
     else:
         print("Fail")
 
+print(f"Test1: test_function([[1, 2, 3, 4, 5], [542, 31]])")
+#[542, 31]
 test_function([[1, 2, 3, 4, 5], [542, 31]])
-test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
-test_function(test_case)
+
+print(f"Test2: test_function([[4, 6, 2, 5, 9, 8], [964, 852]])")
+#[964, 852]
+test_function([[4, 6, 2, 5, 9, 8], [964, 852]])

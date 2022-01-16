@@ -27,9 +27,26 @@ def sqrt(number):
 
     return mid
 
+print(f"Test1: sqrt(9) returns 3")
+#3
 print ("Pass" if  (3 == sqrt(9)) else "Fail")
+
+print(f"Test1: sqrt(0) returns 0")
+#0
 print ("Pass" if  (0 == sqrt(0)) else "Fail")
+
+print(f"Test1: sqrt(16) returns 4")
+#4
 print ("Pass" if  (4 == sqrt(16)) else "Fail")
+
+print(f"Test1: sqrt(1) returns 1")
+#1
 print ("Pass" if  (1 == sqrt(1)) else "Fail")
+
+print(f"Test1: sqrt(27) returns 5")
+#5
 print ("Pass" if  (5 == sqrt(27)) else "Fail")
+
+print(f"Test1: sqrt(15) returns 3")
+#3
 print ("Pass" if  (3 == sqrt(15)) else "Fail")
