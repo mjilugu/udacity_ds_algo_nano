@@ -31,7 +31,6 @@ def rotated_array_search(input_list, number):
 
     return -1
         
-
 def linear_search(input_list, number):
     for index, element in enumerate(input_list):
         if element == number:
@@ -41,27 +40,49 @@ def linear_search(input_list, number):
 def test_function(test_case):
     input_list = test_case[0]
     number = test_case[1]
+    result = rotated_array_search(input_list, number)
     if linear_search(input_list, number) == rotated_array_search(input_list, number):
-        print("Pass")
+        print(f"Pass: {result}")
     else:
-        print("Fail")
+        print(f"Fail: {result}")
 
-print(f"Test1: test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])")
+#
+# Main
+#
+import random
+
+print(f"\nTest1: test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])")
 #0
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 6])
 
-print(f"Test1: test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])")
+print(f"\nTest2: test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])")
 #5
 test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 
-print(f"Test1: test_function([[6, 7, 8, 1, 2, 3, 4], 8])")
+print(f"\nTest3: test_function([[6, 7, 8, 1, 2, 3, 4], 8])")
 #2
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 
-print(f"Test1: test_function([[6, 7, 8, 1, 2, 3, 4], 1])")
+print(f"\nTest4: test_function([[6, 7, 8, 1, 2, 3, 4], 1])")
 #3
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 
-print(f"Test1: test_function([[6, 7, 8, 1, 2, 3, 4], 10])")
+print(f"\nTest5: test_function([[6, 7, 8, 1, 2, 3, 4], 10])")
 #-1
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
+print(f"\nTest6: test_function([[], 10])")
+#-1
+test_function([[], 10])                        # Search in empty array
+
+l = [i for i in range(10000, 100000)]
+n = len(l) - 1000
+l = l[n:] + l[:n] # rotate the array
+
+print(f"\nTest7: test_function([[10000..100000], 999])")
+#-1
+test_function([l, 999])                       # Search in large array
+
+print(f"\nTest8: test_function([[10000..100000], 20001])")
+#11001
+test_function([l, 20001])                     # Search in large array

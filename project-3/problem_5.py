@@ -111,7 +111,8 @@ MyTrie = Trie()
 wordList = [
     "ant", "anthology", "antagonist", "antonym", 
     "fun", "function", "factory", 
-    "trie", "trigger", "trigonometry", "tripod"
+    "trie", "trigger", "trigonometry", "tripod",
+    "keep", "kettle","key","kick","kid","kiosk","kidney","kangaroo","koala","king","kinship","kit","kitchen","knee" ,"kneel", "knife", "knit", "knock", "knot", "know", "knowledge"
 ]
 for word in wordList:
     MyTrie.insert(word)

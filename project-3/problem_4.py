@@ -33,6 +33,11 @@ def test_function(test_case):
     else:
         print("Fail")
 
+#
+# Main
+#
+import random 
+
 print(f"\nTest1: test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])")
 #[0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2]
 test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
@@ -44,3 +49,23 @@ test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0,
 print(f"\nTest3: test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])")
 #[0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2]
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
+
+print(f"\nTest4: test_function([])") # Empty array
+#[]
+test_function([])
+
+print(f"\nTest5: test_function([0,0,0,0])") # Zeros only
+#[0,0,0,0]
+test_function([0,0,0,0])
+
+print(f"\nTest6: test_function([1,0,1,0])") # Zeros and ones
+#[1,0,1,0]
+test_function([1,0,1,0])
+
+print(f"\nTest7: test_function([1,2,2,1])") # Twos and ones
+#[1,2,2,1]
+test_function([1,2,2,1])
+
+l = random.choices([0,1,2],k=100)
+print(f"\nTest8: test_function({l})") # Large array of 0,1,2
+test_function(l)

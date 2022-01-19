@@ -90,6 +90,7 @@ class Router:
 # create the router and add a route
 router = Router("root handler", "not found handler") # remove the 'not found handler' if you did not implement this
 router.add_handler("/home/about", "about handler")  # add a route
+router.add_handler("/super/long/path/that/keeps/going/and/going","long path handler") # add another route
 
 # some lookups with the expected output
 print(f'\nTest1: router.lookup("/")')
@@ -98,7 +99,7 @@ print(router.lookup("/")) # should print 'root handler'
 
 print(f'\nTest2: router.lookup("/home")')
 #'not found handler'
-print(router.lookup("/home")) # should print 'not found handler' or None if you did not implement one
+print(router.lookup("/home")) # should print 'not found handler'
 
 print(f'\nTest3: router.lookup("/home/about")')
 #'about handler'
@@ -106,12 +107,21 @@ print(router.lookup("/home/about")) # should print 'about handler'
 
 print(f'\nTest4: router.lookup("/home/about/")')
 #'about handler'
-print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
+print(router.lookup("/home/about/")) # should print 'about handler'
 
 print(f'\nTest5: router.lookup("/home/about/me")')
 #'not found handler'
-print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+print(router.lookup("/home/about/me")) # should print 'not found handler'
 
 print(f'\nTest6: router.lookup("/home/about/me/")')
 #'not found handler'
-print(router.lookup("/home/about/me/")) # should print 'not found handler' or None if you did not implement one
+print(router.lookup("/home/about/me/")) # should print 'not found handler'
+
+print(f'\nTest7: router.lookup("")')  # Empty string path
+#'root handler'
+print(router.lookup("")) # should print 'root handler'
+
+print(f'\nTest8: router.lookup("/super/long/path/that/keeps/going/and/going")')  # Long path
+#'long path handler'
+print(router.lookup("/super/long/path/that/keeps/going/and/going")) # should print 'long path handler'
+
