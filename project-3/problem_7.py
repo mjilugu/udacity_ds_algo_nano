@@ -7,9 +7,7 @@ class RouteTrie:
     def insert(self, path, handler):
         # Similar to our previous example you will want to recursively add nodes
         # Make sure you assign the handler to only the leaf (deepest) node of this path
-        # curr = self.root
 
-        # curr.handler = handler
         self.root.insert(path, handler)
 
     def find(self, path):
@@ -37,10 +35,14 @@ class RouteTrieNode:
         if len(path) == 0:
             return
         if len(path) == 1:
-            self.children[path[0]] = RouteTrieNode(handler)
+            if path[0] not in self.children:
+                self.children[path[0]] = RouteTrieNode(handler)
+            else:
+                self.children[path[0]].handler = handler
             return
             
-        self.children[path[0]] = RouteTrieNode()
+        if path[0] not in self.children:
+            self.children[path[0]] = RouteTrieNode()
         self.children[path[0]].insert(path[1:], handler)
 
 
@@ -91,6 +93,7 @@ class Router:
 router = Router("root handler", "not found handler") # remove the 'not found handler' if you did not implement this
 router.add_handler("/home/about", "about handler")  # add a route
 router.add_handler("/super/long/path/that/keeps/going/and/going","long path handler") # add another route
+router.add_handler("/super/long/path/that", "that handler")
 
 # some lookups with the expected output
 print(f'\nTest1: router.lookup("/")')
